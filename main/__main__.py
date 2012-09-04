@@ -9,8 +9,7 @@ Should be called via a bash script in folder above"""
 # DEVNOTES
 ###
 
-# TODO - Start a proper repository for the game/engine
-# TODO - Write sartup scripts and the SFML lib file switch for 32/64
+# TODO - Write startup scripts and the SFML lib file switch for 32/64
 # TODO - Implement logging
 # TODO - Start on UI
 # TODO - Make the doors slide [Jday requied]
@@ -48,7 +47,7 @@ logg.info('Start imports.')
 from sfml import Clock, View, FloatRect, RenderWindow, VideoMode, Event, Texture, Color
 logg.info('SFML imported')
 
-from constants import PP_WIDTH, PP_HEIGHT, GAME_TITLE, GAME_VERSION, SCALE
+from constants import PP_WIDTH, PP_HEIGHT, GAME_TITLE, GAME_VERSION, SCALE, BAR_HEIGHT
 logg.info('Constants imported')
 
 from gameworld import Gameworld
@@ -58,6 +57,9 @@ logg.info('Drawable functions imported')
 
 from raycaster import Raycaster
 logg.info('Raycaster class imported')
+
+from hud import Hud
+logg.info('Hud class imported')
 
 ###
 # DEBUG FUNCTIONS
@@ -88,10 +90,10 @@ def main():
 
     #Instancing, etc.
 
-    scale = View().from_rect(FloatRect(0,0,PP_WIDTH,PP_HEIGHT))
+    main_view = View().from_rect(FloatRect(0,0,PP_WIDTH,PP_HEIGHT+BAR_HEIGHT))
     window = RenderWindow(VideoMode(PP_WIDTH*SCALE,PP_HEIGHT*SCALE), GAME_TITLE + ' v.' + GAME_VERSION)
     window.framerate_limit = 61
-    window.view = scale
+    window.view = main_view
 
     #Create an instance for all game variables and loop functions
     # and set the level to TESTLEVEL
@@ -101,10 +103,21 @@ def main():
 
     # INITIALIZE TEXTURES HERE OR AFTER \o/
     TEXTURE_WALL = Texture.load_from_file('main/walls.png')
+    TEXTURE_BAR = Texture.load_from_file('main/bar.png')
+    TEXTURE_HUDWEAPONS = Texture.load_from_file('main/hud_weapons.png')
+    TEXTURE_FACES = Texture.load_from_file('main/faces.png')
+
+    #prepare the hud
+
+    hud = Hud(player = game.player, background = TEXTURE_BAR, faces = TEXTURE_FACES, weapons = TEXTURE_HUDWEAPONS)
+
+    #prepare the wall textures
 
     wall_sprites = game.create_wall_sprite_list(TEXTURE_WALL)
 
     rays = Raycaster(player = game.player, sprites = wall_sprites, gamemap = game.current_level)
+
+    #prepare other stuff
 
     player_action = ''
     frame = 0
@@ -112,6 +125,11 @@ def main():
     running = True
     nofocus = False
 
+    ##
+    #MAIN LOOP
+    ##
+
+    logg.info('Main loop starting...')
     while running:
         for event in window.iter_events():
             if event.type == Event.CLOSED or player_action == 'quit':
@@ -127,7 +145,9 @@ def main():
         for sprite in wall_sprites:
             window.draw(sprite)
 
-        # window.draw(test_sprite)
+        window.draw(hud.background)
+        window.draw(hud.face_full)
+        window.draw(hud.pistol)
 
         debug_txt = text('['+str(draw_fps(frame))+'] ' + str(game.player.ux) + '(' + str(game.player.x) + '),'+str(game.player.uy) + '(' + str(game.player.y) + '):' + str(game.player.heading), style = 1)
         window.draw(debug_txt)
