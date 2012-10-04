@@ -66,15 +66,19 @@ logg.info('Hud class imported')
 ##
 
 clock = Clock()
+frame = 0
+fps = 0
 
-def draw_fps(frame):
+def draw_fps(framein):
+    global frame, fps
+
     frame += 1
-    fps = 0
     time = clock.elapsed_time.as_milliseconds()
     if time >= 1000:
         clock.restart()
         time = time/1000
-        fps = int(frame/time)
+        fps = int(framein/time)
+        #logg.info('Frame: ' + str(frame) + '. FPS: ' + str(fps))
         frame = 0
 
     return fps
@@ -120,7 +124,6 @@ def main():
     #prepare other stuff
 
     player_action = ''
-    frame = 0
 
     running = True
     nofocus = False
@@ -131,6 +134,7 @@ def main():
 
     logg.info('Main loop starting...')
     while running:
+
         for event in window.iter_events():
             if event.type == Event.CLOSED or player_action == 'quit':
                 running = False
@@ -173,3 +177,7 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+else:
+    logg.info['This file is not supposed to be imported.']
+    print('This file is not supposed to be imported.')
