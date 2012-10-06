@@ -19,14 +19,14 @@ from constants import PLAYER_SPEED, PP_HEIGHT, PP_WIDTH
 
 from sfml import Keyboard, IntRect, Sprite, Texture
 
-TESTLEVEL = [   ['#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#'],
+TESTLEVEL = [   ['#', '#', '[', '=', ']', '#', '#', '#', '#', '#', '#'],
                 ['#', '.', '.', '.', '.', '#', '.', '.', '$', '.', '#'],
                 ['#', '.', '$', '.', '.', '$', '.', '.', '$', '.', '#'],
                 ['#', '.', '.', '.', '.', '#', '.', '.', '.', '.', '#'],
                 ['#', '.', '$', '.', '.', '%', '.', '.', '$', '.', '#'],
                 ['#', '.', '.', '.', '.', '#', '.', '.', '$', '.', '#'],
                 ['#', '.', '.', '.', '.', '$', '.', '.', '.', '.', '#'],
-                ['#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#']]
+                ['#', '#', '[', '=', ']', '#', '#', '#', '#', '#', '#']]
 
 TESTLEVEL_WIDTH = 8
 TESTLEVEL_HEIGHT = 11
@@ -57,6 +57,12 @@ class Gameworld(object):
                     door_component = Door(player = self.player)
                     dict_map[(l_x, l_y)].door = door_component
                     dict_map[(l_x, l_y)].add_door_component()
+                elif level_array[l_x][l_y] == '[':
+                    dict_map[(l_x, l_y)].skin = 3
+                elif level_array[l_x][l_y] == '=':
+                    dict_map[(l_x, l_y)].skin = 4
+                elif level_array[l_x][l_y] == ']':
+                    dict_map[(l_x, l_y)].skin = 5
 
         self.current_level = dict_map
 
