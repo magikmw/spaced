@@ -9,10 +9,9 @@ Should be called via a bash script in folder above"""
 # DEVNOTES
 ###
 
-# TODO - Make the weapons objects within player with separate ammo counts and 'enabled'
-# TODO - Write startup scripts and the SFML lib file switch for 32/64
+# TODO - Write startup scripts // log clear // win build file
 # TODO - Implement logging
-# TODO - Start on UI
+# TODO - In hand weapon sprite + shooting effects
 # TODO - Make the doors slide [Jday requied]
 # TODO - Wall-sliding (physics)
 # TODO - Static enemies and items
@@ -152,10 +151,6 @@ def main():
             window.draw(sprite)
 
         hud.display(window)
-
-        # window.draw(hud.background)
-        # window.draw(hud.face_full)
-        # window.draw(hud.pistol)
 
         debug_txt = text('['+str(draw_fps(frame))+'] ' + str(game.player.ux) + '(' + str(game.player.x) + '),'+str(game.player.uy) + '(' + str(game.player.y) + '):' + str(game.player.heading), style = 1)
         window.draw(debug_txt)
