@@ -21,6 +21,7 @@ class Player(object):
         self.hp = hp
         self.weapon = weapon
         self.score = score
+        self.attack = False
 
     def turn(self, direction):
         self.heading += direction

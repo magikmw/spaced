@@ -15,7 +15,7 @@ PP_CENTRE_Y  = PP_HEIGHT/2
 FOV          = 60
 PP_DISTANCE  = int((PP_WIDTH / 2) / tan(radians(FOV/2)))
 ANGLE_SHIFT  = FOV/PP_WIDTH
-SCALE        = 2
+SCALE        = 5
 BAR_HEIGHT   = 50
 
 #the player speed rating, currently shared by turning and moving

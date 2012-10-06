@@ -12,7 +12,7 @@ from constants import PP_HEIGHT
 class Hud(object):
     """HUD controller."""
 
-    def __init__(self, player, background, faces, weapons, numbers):
+    def __init__(self, player, background, faces, hudweapons, weapons, numbers):
         self.player = player
 
         self.background = Sprite(background)
@@ -22,8 +22,14 @@ class Hud(object):
         self.face.position = 116, 205
         self.face.scale = 2/3, 2/3
 
+        self.hudweapon = Sprite(hudweapons)
+        self.hudweapon.position = 251, 205
+
         self.weapon = Sprite(weapons)
-        self.weapon.position = 251, 205
+        # self.weapon.position = 112, 105 #for x1.5
+        # self.weapon.position = 96, 73 #for x2
+        self.weapon.position = 104, 89
+        self.weapon.scale = 1.75, 1.75
 
         self.deck_10 = Sprite(numbers)
         self.deck_10.position = 12, 223
@@ -73,13 +79,31 @@ class Hud(object):
         else:
             self.face.texture_rect = IntRect(0, 0, 64, 64)
 
-        #weapons
+        #hud weapons indicator
         if self.player.weapon.ident == 'rifle':
-            self.weapon.texture_rect = IntRect(0, 85, 65, 42)
+            self.hudweapon.texture_rect = IntRect(0, 85, 65, 42)
         elif self.player.weapon.ident == 'pistol':
-            self.weapon.texture_rect = IntRect(0, 43, 65, 42)
+            self.hudweapon.texture_rect = IntRect(0, 43, 65, 42)
         else:
-            self.weapon.texture_rect = IntRect(0, 0, 65, 42)
+            self.hudweapon.texture_rect = IntRect(0, 0, 65, 42)
+
+        #in hand weapon indicator
+        if self.player.attack == True:
+            if self.player.weapon.ident == 'rifle':
+                self.weapon.texture_rect = IntRect(64, 128, 64, 64)
+            elif self.player.weapon.ident == 'pistol':
+                self.weapon.texture_rect = IntRect(64, 64, 64, 64)
+            else:
+                self.weapon.texture_rect = IntRect(64, 0, 64, 64)
+
+        else:
+            if self.player.weapon.ident == 'rifle':
+                self.weapon.texture_rect = IntRect(0, 128, 64, 64)
+            elif self.player.weapon.ident == 'pistol':
+                self.weapon.texture_rect = IntRect(0, 64, 64, 64)
+            else:
+                self.weapon.texture_rect = IntRect(0, 0, 64, 64)
+
 
         #numbers
 
@@ -105,7 +129,8 @@ class Hud(object):
         
         window.draw(self.background)
         window.draw(self.face)
-        window.draw(self.weapon)
+        window.draw(self.hudweapon)
+        window.draw(self.weapon)        
 
         i = 0
         while i != len(self.all_numbers):

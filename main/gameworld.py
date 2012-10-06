@@ -103,6 +103,9 @@ class Gameworld(object):
         if Keyboard.is_key_pressed(Keyboard.SPACE):
             self.open_doors()
 
+        if Keyboard.is_key_pressed(Keyboard.R_CONTROL):
+            self.player.attack = True
+
         if Keyboard.is_key_pressed(Keyboard.NUM1) and self.knife.enabled == 1:
             self.player.weapon = self.knife
         elif Keyboard.is_key_pressed(Keyboard.NUM2) and self.pistol.enabled == 1:

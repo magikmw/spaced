@@ -11,7 +11,6 @@ Should be called via a bash script in folder above"""
 
 # TODO - Write startup scripts // log clear // win build file
 # TODO - Implement logging
-# TODO - In hand weapon sprite + shooting effects
 # TODO - Make the doors slide [Jday requied]
 # TODO - Wall-sliding (physics)
 # TODO - Static enemies and items
@@ -95,7 +94,7 @@ def main():
     #Instancing, etc.
 
     main_view = View().from_rect(FloatRect(0,0,PP_WIDTH,PP_HEIGHT+BAR_HEIGHT))
-    window = RenderWindow(VideoMode(PP_WIDTH*SCALE,PP_HEIGHT*SCALE), GAME_TITLE + ' v.' + GAME_VERSION)
+    window = RenderWindow(VideoMode(PP_WIDTH*SCALE,(PP_HEIGHT+BAR_HEIGHT)*SCALE), GAME_TITLE + ' v.' + GAME_VERSION)
     window.framerate_limit = 61
     window.view = main_view
 
@@ -111,10 +110,11 @@ def main():
     TEXTURE_HUDWEAPONS = Texture.load_from_file('main/hud_weapons.png')
     TEXTURE_FACES = Texture.load_from_file('main/faces.png')
     TEXTURE_NUMBERS = Texture.load_from_file('main/numbers.png')
+    TEXTURE_WEAPONS = Texture.load_from_file('main/weapons.png')
 
     #prepare the hud
 
-    hud = Hud(player = game.player, background = TEXTURE_BAR, faces = TEXTURE_FACES, weapons = TEXTURE_HUDWEAPONS, numbers = TEXTURE_NUMBERS)
+    hud = Hud(player = game.player, background = TEXTURE_BAR, faces = TEXTURE_FACES, hudweapons = TEXTURE_HUDWEAPONS, weapons = TEXTURE_WEAPONS, numbers = TEXTURE_NUMBERS)
 
     #prepare the wall textures
 
@@ -151,6 +151,8 @@ def main():
             window.draw(sprite)
 
         hud.display(window)
+
+        game.player.attack = False
 
         debug_txt = text('['+str(draw_fps(frame))+'] ' + str(game.player.ux) + '(' + str(game.player.x) + '),'+str(game.player.uy) + '(' + str(game.player.y) + '):' + str(game.player.heading), style = 1)
         window.draw(debug_txt)
