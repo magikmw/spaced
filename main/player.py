@@ -10,13 +10,17 @@ from math import sin, cos, radians
 class Player(object):
     """The player. Should be ok to reuse for the main thing
     """
-    def __init__(self, gamemap, x=2, y=1, heading=270):
+    def __init__(self, gamemap, weapon, x=2, y=1, heading=270, deck = 1, hp = 100, score = 0):
         self.x = x #x and y are the grid coordinates
         self.y = y
         self.ux = x * 64 + 32 #ux and uy are the unit coordinates
         self.uy = y * 64 + 32
         self.heading = heading
         self.gamemap = gamemap
+        self.deck = deck
+        self.hp = hp
+        self.weapon = weapon
+        self.score = score
 
     def turn(self, direction):
         self.heading += direction
@@ -65,7 +69,6 @@ class Player(object):
             self.uy += int(diry*momentum)        
 
             self.update_grid()
-
 
     def update_grid(self):
         self.x = int(self.ux / 64)

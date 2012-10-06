@@ -9,6 +9,7 @@ Should be called via a bash script in folder above"""
 # DEVNOTES
 ###
 
+# TODO - Make the weapons objects within player with separate ammo counts and 'enabled'
 # TODO - Write startup scripts and the SFML lib file switch for 32/64
 # TODO - Implement logging
 # TODO - Start on UI
@@ -77,7 +78,7 @@ def draw_fps(framein):
     if time >= 1000:
         clock.restart()
         time = time/1000
-        fps = int(framein/time)
+        fps = int(framein/time)+1
         #logg.info('Frame: ' + str(frame) + '. FPS: ' + str(fps))
         frame = 0
 
@@ -110,10 +111,11 @@ def main():
     TEXTURE_BAR = Texture.load_from_file('main/bar.png')
     TEXTURE_HUDWEAPONS = Texture.load_from_file('main/hud_weapons.png')
     TEXTURE_FACES = Texture.load_from_file('main/faces.png')
+    TEXTURE_NUMBERS = Texture.load_from_file('main/numbers.png')
 
     #prepare the hud
 
-    hud = Hud(player = game.player, background = TEXTURE_BAR, faces = TEXTURE_FACES, weapons = TEXTURE_HUDWEAPONS)
+    hud = Hud(player = game.player, background = TEXTURE_BAR, faces = TEXTURE_FACES, weapons = TEXTURE_HUDWEAPONS, numbers = TEXTURE_NUMBERS)
 
     #prepare the wall textures
 
@@ -149,9 +151,11 @@ def main():
         for sprite in wall_sprites:
             window.draw(sprite)
 
-        window.draw(hud.background)
-        window.draw(hud.face_full)
-        window.draw(hud.pistol)
+        hud.display(window)
+
+        # window.draw(hud.background)
+        # window.draw(hud.face_full)
+        # window.draw(hud.pistol)
 
         debug_txt = text('['+str(draw_fps(frame))+'] ' + str(game.player.ux) + '(' + str(game.player.x) + '),'+str(game.player.uy) + '(' + str(game.player.y) + '):' + str(game.player.heading), style = 1)
         window.draw(debug_txt)

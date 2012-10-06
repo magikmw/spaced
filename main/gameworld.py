@@ -13,6 +13,8 @@ from door import Door
 
 from player import Player
 
+from weapons import Weapons
+
 from constants import PLAYER_SPEED, PP_HEIGHT, PP_WIDTH
 
 from sfml import Keyboard, IntRect, Sprite, Texture
@@ -33,7 +35,10 @@ class Gameworld(object):
     def __init__(self):
         self.doors = []
         self.current_level = None
-        self.player = Player(gamemap = self.current_level)
+        self.rifle = Weapons(ident = 'rifle', ammo = 50, enabled = 1)
+        self.pistol = Weapons(ident = 'pistol', ammo = 10, enabled = 1)
+        self.knife = Weapons(ident = 'knife', ammo = 0, enabled = 1)
+        self.player = Player(gamemap = self.current_level, weapon = self.knife)
 
     def create_dict_map(self, width = TESTLEVEL_WIDTH, height = TESTLEVEL_HEIGHT, level_array = TESTLEVEL):
         dict_map = {(x,y):Tile((x,y)) for x in range(width) for y in range(height)} 
@@ -91,6 +96,28 @@ class Gameworld(object):
 
         if Keyboard.is_key_pressed(Keyboard.SPACE):
             self.open_doors()
+
+        if Keyboard.is_key_pressed(Keyboard.NUM1) and self.knife.enabled == 1:
+            self.player.weapon = self.knife
+        elif Keyboard.is_key_pressed(Keyboard.NUM2) and self.pistol.enabled == 1:
+            self.player.weapon = self.pistol
+        elif Keyboard.is_key_pressed(Keyboard.NUM3) and self.rifle.enabled == 1:
+            self.player.weapon = self.rifle
+
+        # DEBUG KEYS
+        if Keyboard.is_key_pressed(Keyboard.P):
+            if self.player.hp + 5 <= 100:
+                self.player.hp += 5
+        elif Keyboard.is_key_pressed(Keyboard.O):
+            if self.player.hp - 5 >= 0:
+                self.player.hp -= 5
+
+        if Keyboard.is_key_pressed(Keyboard.R_BRACKET):
+            if self.player.score + 55 < 9999:
+                self.player.score += 55
+        elif Keyboard.is_key_pressed(Keyboard.L_BRACKET):
+            if self.player.score - 55 >= 0:
+                self.player.score -= 55
 
     def create_wall_sprite_list(self, texture):
         sprite = Sprite(texture)
