@@ -79,7 +79,7 @@ def draw_fps(framein):
         clock.restart()
         time = time/1000
         fps = int(framein/time)+1
-        logg.info('Frame: ' + str(frame) + '. FPS: ' + str(fps))
+        logg.info('FPS: ' + str(fps))
         frame = 0
 
     return fps
@@ -105,6 +105,7 @@ def main():
     game = Gameworld()
     game.create_dict_map()
     game.player.gamemap = game.current_level
+    game.init_physics()
 
     # INITIALIZE TEXTURES HERE OR AFTER \o/
     TEXTURE_WALL = Texture.load_from_file('main/walls.png')
@@ -156,7 +157,7 @@ def main():
 
         game.player.attack = False
 
-        debug_txt = text('['+str(draw_fps(frame))+'] ' + str(game.player.ux) + '(' + str(game.player.x) + '),'+str(game.player.uy) + '(' + str(game.player.y) + '):' + str(game.player.heading), style = 1)
+        debug_txt = text('['+str(draw_fps(frame))+'] ' + str("{0:.2f}".format(game.player.ux)) + '(' + str(game.player.x) + '),'+str("{0:.2f}".format(game.player.uy)) + '(' + str(game.player.y) + '):' + str(game.player.heading), style = 1)
         window.draw(debug_txt)
 
         wall_sprites = rays.texture_slices(rays.cast_rays(), wall_sprites)

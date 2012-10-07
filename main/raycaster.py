@@ -61,17 +61,21 @@ class Raycaster(object):
 
             #calculate the cx and cy
             if tdx == 1:
-                cx = (1 - (self.player.ux % 64)/64) * tick_x
+                # cx = (1 - (self.player.ux % 64)/64) * tick_x
+                cx = (1 - (self.player.ux - self.player.x)) * tick_x
             elif tdx == -1:
-                cx = ((self.player.ux % 64)/64) * tick_x
+                # cx = ((self.player.ux % 64)/64) * tick_x
+                cx = (self.player.ux - self.player.x) * tick_x
             else:
                 cx = 9999999999999999999999999999999999
                 #don't use bigger maps than that
 
             if tdy == 1:
-                cy = (1 - (self.player.uy % 64)/64) * tick_y
+                # cy = (1 - (self.player.uy % 64)/64) * tick_y
+                cy = (1 - (self.player.uy - self.player.y)) * tick_y
             elif tdy == -1:
-                cy = ((self.player.uy % 64)/64) * tick_y
+                # cy = ((self.player.uy % 64)/64) * tick_y
+                cy = (self.player.uy - self.player.y) * tick_y
             else:
                 cy = 9999999999999999999999999999999999
                 #don't use bigger maps than that

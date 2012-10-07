@@ -18,7 +18,8 @@ ANGLE_SHIFT  = FOV/PP_WIDTH
 SCALE        = 2
 BAR_HEIGHT   = 50
 
-#the player speed rating, currently shared by turning and moving
-PLAYER_SPEED = 3
+#the player speed
+PLAYER_SPEED = 0.05
+TURN_SPEED = 3
 
 TEXTURE_WALL = 'main/walls.png'

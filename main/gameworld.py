@@ -17,7 +17,7 @@ from weapons import Weapons
 
 from physics import Physics
 
-from constants import PLAYER_SPEED, PP_HEIGHT, PP_WIDTH
+from constants import PLAYER_SPEED, TURN_SPEED, PP_HEIGHT, PP_WIDTH
 
 from sfml import Keyboard, IntRect, Sprite, Texture
 
@@ -41,7 +41,6 @@ class Gameworld(object):
         self.pistol = Weapons(ident = 'pistol', ammo = 10, enabled = 1)
         self.knife = Weapons(ident = 'knife', ammo = 0, enabled = 1)
         self.player = Player(gamemap = self.current_level, weapon = self.knife)
-        self.physics = Physics(player = self.player, level = self.current_level)
 
     def create_dict_map(self, width = TESTLEVEL_WIDTH, height = TESTLEVEL_HEIGHT, level_array = TESTLEVEL):
         dict_map = {(x,y):Tile((x,y)) for x in range(width) for y in range(height)} 
@@ -73,8 +72,8 @@ class Gameworld(object):
         dirx = math.cos(math.radians(self.player.heading))
         diry = math.sin(math.radians(self.player.heading))
 
-        new_x = int((self.player.ux + int(dirx*64))/64)
-        new_y = int((self.player.uy + int(diry*64))/64)
+        new_x = int(self.player.ux + -dirx*1)
+        new_y = int(self.player.uy + -diry*1)
 
         if self.current_level[(new_x, new_y)].door and len(self.doors) == 0:
             self.current_level[(new_x, new_y)].door.state = 1
@@ -89,9 +88,9 @@ class Gameworld(object):
             return 'quit'
 
         if Keyboard.is_key_pressed(Keyboard.E):
-            self.player.turn(PLAYER_SPEED)
+            self.player.turn(TURN_SPEED)
         elif Keyboard.is_key_pressed(Keyboard.Q):
-            self.player.turn(-PLAYER_SPEED)
+            self.player.turn(-TURN_SPEED)
 
         if Keyboard.is_key_pressed(Keyboard.A):
             self.player.strafe(PLAYER_SPEED)
@@ -141,3 +140,6 @@ class Gameworld(object):
             wall_sprites.append(wall_sprite)
 
         return wall_sprites
+
+    def init_physics(self):
+        self.physics = Physics(player = self.player, level = self.current_level, level_width = TESTLEVEL_WIDTH, level_height = TESTLEVEL_HEIGHT)

@@ -10,11 +10,11 @@ from math import sin, cos, radians
 class Player(object):
     """The player. Should be ok to reuse for the main thing
     """
-    def __init__(self, gamemap, weapon, x=2, y=1, heading=270, deck = 1, hp = 100, score = 0):
+    def __init__(self, gamemap, weapon, x=2, y=1, heading=0, deck = 1, hp = 100, score = 0):
         self.x = x #x and y are the grid coordinates
         self.y = y
-        self.ux = x * 64 + 32 #ux and uy are the unit coordinates
-        self.uy = y * 64 + 32
+        self.ux = x * 1.5 #ux and uy are the unit coordinates
+        self.uy = y * 1.5
         self.heading = heading
         self.gamemap = gamemap
         self.deck = deck
@@ -22,6 +22,7 @@ class Player(object):
         self.weapon = weapon
         self.score = score
         self.attack = False
+        self.body = None
 
     def turn(self, direction):
         self.heading += direction
@@ -34,12 +35,12 @@ class Player(object):
         dirx = -cos(radians(self.heading))
         diry = -sin(radians(self.heading))
 
-        new_x = self.ux + int(dirx*momentum)
-        new_y = self.uy + int(diry*momentum)
+        new_x = self.ux + momentum*dirx
+        new_y = self.uy + momentum*diry
 
-        if self.gamemap[(int(new_x/64),int(new_y/64))].blocked == False:
-            self.ux += int(dirx*momentum)
-            self.uy += int(diry*momentum)
+        if self.gamemap[(int(new_x),int(new_y))].blocked == False:
+            self.ux += momentum*dirx
+            self.uy += momentum*diry
 
             self.update_grid()
 
@@ -62,15 +63,15 @@ class Player(object):
         # if heading < 0:
         #     heading += 360
 
-        new_x = self.ux + int(dirx*momentum)
-        new_y = self.uy + int(diry*momentum)
+        new_x = self.ux + dirx*momentum
+        new_y = self.uy + diry*momentum
 
-        if self.gamemap[(int(new_x/64),int(new_y/64))].blocked == False:
-            self.ux += int(dirx*momentum)
-            self.uy += int(diry*momentum)        
+        if self.gamemap[(int(new_x),int(new_y))].blocked == False:
+            self.ux += dirx*momentum
+            self.uy += diry*momentum
 
             self.update_grid()
 
     def update_grid(self):
-        self.x = int(self.ux / 64)
-        self.y = int(self.uy / 64)
+        self.x = int(self.ux)
+        self.y = int(self.uy)

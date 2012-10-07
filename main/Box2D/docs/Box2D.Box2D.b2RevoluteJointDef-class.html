@@ -1,0 +1,795 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Box2D.Box2D.b2RevoluteJointDef</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="Box2D-module.html">Package&nbsp;Box2D</a> ::
+        <a href="Box2D.Box2D-module.html">Module&nbsp;Box2D</a> ::
+        Class&nbsp;b2RevoluteJointDef
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="Box2D.Box2D.b2RevoluteJointDef-class.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS DESCRIPTION ==================== -->
+<h1 class="epydoc">Class b2RevoluteJointDef</h1><p class="nomargin-top"><span class="codelink"><a href="Box2D.Box2D-pysrc.html#b2RevoluteJointDef">source&nbsp;code</a></span></p>
+<pre class="base-tree">
+object --+    
+         |    
+<a href="Box2D.Box2D.b2JointDef-class.html">b2JointDef</a> --+
+             |
+            <strong class="uidshort">b2RevoluteJointDef</strong>
+</pre>
+
+<hr />
+<p>Revolute joint definition. This requires defining an anchor point 
+  where the bodies are joined. The definition uses local anchor points so 
+  that the initial configuration can violate the constraint slightly. You 
+  also need to specify the initial relative angle for joint limits. This 
+  helps when saving and loading a game. The local anchor points are 
+  measured from the body's origin rather than the center of mass because: 
+  1. you might not know where the center of mass will be. 2. if you 
+  add/remove shapes from a body and recompute the mass, the joints will be 
+  broken.</p>
+
+<!-- ==================== INSTANCE METHODS ==================== -->
+<a name="section-InstanceMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Instance Methods</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-InstanceMethods"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Box2D.Box2D.b2RevoluteJointDef-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">**kwargs</span>)</span><br />
+      x.__init__(...) initializes x; see help(type(x)) for signature</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Box2D.Box2D-pysrc.html#b2RevoluteJointDef.__init__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Box2D.Box2D.b2RevoluteJointDef-class.html#__dir__" class="summary-sig-name">__dir__</a>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Box2D.Box2D-pysrc.html#_dir_filter">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Box2D.Box2D.b2RevoluteJointDef-class.html#__repr__" class="summary-sig-name">__repr__</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      repr(x)</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Box2D.Box2D-pysrc.html#b2RevoluteJointDef.__repr__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="__set_anchor"></a><span class="summary-sig-name">__set_anchor</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">value</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Box2D.Box2D-pysrc.html#b2RevoluteJointDef.__set_anchor">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="__get_anchor"></a><span class="summary-sig-name">__get_anchor</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Box2D.Box2D-pysrc.html#b2RevoluteJointDef.__get_anchor">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Box2D.Box2D.b2RevoluteJointDef-class.html#__swig_destroy__" class="summary-sig-name">__swig_destroy__</a>(<span class="summary-sig-arg">...</span>)</span><br />
+      delete_b2RevoluteJointDef(b2RevoluteJointDef self)</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Box2D.Box2D.b2RevoluteJointDef-class.html#Initialize" class="summary-sig-name">Initialize</a>(<span class="summary-sig-arg">...</span>)</span><br />
+      b2RevoluteJointDef_Initialize(b2RevoluteJointDef self, b2Body bodyA, 
+      b2Body bodyB, b2Vec2 anchor)</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Box2D.Box2D-pysrc.html#b2RevoluteJointDef.Initialize">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code><a href="Box2D.Box2D.b2JointDef-class.html">b2JointDef</a></code></b>:
+      <code><a href="Box2D.Box2D.b2JointDef-class.html#ClearUserData">ClearUserData</a></code>,
+      <code><a href="Box2D.Box2D.b2JointDef-class.html#__del__">__del__</a></code>,
+      <code><a href="Box2D.Box2D.b2JointDef-class.html#to_kwargs">to_kwargs</a></code>
+      </p>
+    <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
+      <code>__delattr__</code>,
+      <code>__format__</code>,
+      <code>__getattribute__</code>,
+      <code>__hash__</code>,
+      <code>__new__</code>,
+      <code>__reduce__</code>,
+      <code>__reduce_ex__</code>,
+      <code>__setattr__</code>,
+      <code>__sizeof__</code>,
+      <code>__str__</code>,
+      <code>__subclasshook__</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== PROPERTIES ==================== -->
+<a name="section-Properties"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Properties</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-Properties"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="Box2D.Box2D.b2RevoluteJointDef-class.html#thisown" class="summary-name">thisown</a><br />
+      The membership flag
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="Box2D.Box2D.b2RevoluteJointDef-class.html#localAnchorA" class="summary-name">localAnchorA</a><br />
+      b2RevoluteJointDef_localAnchorA_get(b2RevoluteJointDef self) -&gt; 
+      b2Vec2
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="Box2D.Box2D.b2RevoluteJointDef-class.html#localAnchorB" class="summary-name">localAnchorB</a><br />
+      b2RevoluteJointDef_localAnchorB_get(b2RevoluteJointDef self) -&gt; 
+      b2Vec2
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="Box2D.Box2D.b2RevoluteJointDef-class.html#referenceAngle" class="summary-name">referenceAngle</a><br />
+      b2RevoluteJointDef_referenceAngle_get(b2RevoluteJointDef self) -&gt; 
+      float32
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="Box2D.Box2D.b2RevoluteJointDef-class.html#enableLimit" class="summary-name">enableLimit</a><br />
+      b2RevoluteJointDef_enableLimit_get(b2RevoluteJointDef self) -&gt; 
+      bool
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="Box2D.Box2D.b2RevoluteJointDef-class.html#lowerAngle" class="summary-name">lowerAngle</a><br />
+      b2RevoluteJointDef_lowerAngle_get(b2RevoluteJointDef self) -&gt; 
+      float32
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="Box2D.Box2D.b2RevoluteJointDef-class.html#upperAngle" class="summary-name">upperAngle</a><br />
+      b2RevoluteJointDef_upperAngle_get(b2RevoluteJointDef self) -&gt; 
+      float32
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="Box2D.Box2D.b2RevoluteJointDef-class.html#enableMotor" class="summary-name">enableMotor</a><br />
+      b2RevoluteJointDef_enableMotor_get(b2RevoluteJointDef self) -&gt; 
+      bool
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="Box2D.Box2D.b2RevoluteJointDef-class.html#motorSpeed" class="summary-name">motorSpeed</a><br />
+      b2RevoluteJointDef_motorSpeed_get(b2RevoluteJointDef self) -&gt; 
+      float32
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="Box2D.Box2D.b2RevoluteJointDef-class.html#maxMotorTorque" class="summary-name">maxMotorTorque</a><br />
+      b2RevoluteJointDef_maxMotorTorque_get(b2RevoluteJointDef self) -&gt; 
+      float32
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="Box2D.Box2D.b2RevoluteJointDef-class.html#anchor" class="summary-name">anchor</a><br />
+      The anchor in world coordinates.
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code><a href="Box2D.Box2D.b2JointDef-class.html">b2JointDef</a></code></b>:
+      <code><a href="Box2D.Box2D.b2JointDef-class.html#bodyA">bodyA</a></code>,
+      <code><a href="Box2D.Box2D.b2JointDef-class.html#bodyB">bodyB</a></code>,
+      <code><a href="Box2D.Box2D.b2JointDef-class.html#collideConnected">collideConnected</a></code>,
+      <code><a href="Box2D.Box2D.b2JointDef-class.html#type">type</a></code>,
+      <code><a href="Box2D.Box2D.b2JointDef-class.html#userData">userData</a></code>
+      </p>
+    <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
+      <code>__class__</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== METHOD DETAILS ==================== -->
+<a name="section-MethodDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Method Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-MethodDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="__init__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__init__</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">**kwargs</span>)</span>
+    <br /><em class="fname">(Constructor)</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Box2D.Box2D-pysrc.html#b2RevoluteJointDef.__init__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>x.__init__(...) initializes x; see help(type(x)) for signature</p>
+  <dl class="fields">
+    <dt>Overrides:
+        object.__init__
+        <dd><em class="note">(inherited documentation)</em></dd>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="__dir__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__dir__</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Box2D.Box2D-pysrc.html#_dir_filter">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  
+  <dl class="fields">
+    <dt>Overrides:
+        <a href="Box2D.Box2D-module.html#_dir_filter" onclick="show_private();">_dir_filter</a>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="__repr__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__repr__</span>(<span class="sig-arg">self</span>)</span>
+    <br /><em class="fname">(Representation operator)</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Box2D.Box2D-pysrc.html#b2RevoluteJointDef.__repr__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>repr(x)</p>
+  <dl class="fields">
+    <dt>Overrides:
+        object.__repr__
+        <dd><em class="note">(inherited documentation)</em></dd>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="__swig_destroy__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__swig_destroy__</span>(<span class="sig-arg">...</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    >&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>delete_b2RevoluteJointDef(b2RevoluteJointDef self)</p>
+  <dl class="fields">
+    <dt>Overrides:
+        <a href="_Box2D%27-module.html#delete_b2JointDef">_Box2D'.delete_b2JointDef</a>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="Initialize"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">Initialize</span>(<span class="sig-arg">...</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Box2D.Box2D-pysrc.html#b2RevoluteJointDef.Initialize">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>b2RevoluteJointDef_Initialize(b2RevoluteJointDef self, b2Body bodyA, 
+  b2Body bodyB, b2Vec2 anchor)</p>
+  <p>Initialize the bodies, anchors, and reference angle using a world 
+  anchor point.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== PROPERTY DETAILS ==================== -->
+<a name="section-PropertyDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Property Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-PropertyDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="thisown"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">thisown</h3>
+  <p>The membership flag</p>
+  <dl class="fields">
+    <dt>Get Method:</dt>
+    <dd class="value"><span class="summary-sig"><i>unreachable</i>(<span class="summary-sig-arg">x</span>)</span>
+    </dd>
+    <dt>Set Method:</dt>
+    <dd class="value"><span class="summary-sig"><i>unreachable</i>(<span class="summary-sig-arg">x</span>,
+        <span class="summary-sig-arg">v</span>)</span>
+    </dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="localAnchorA"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">localAnchorA</h3>
+  <p>b2RevoluteJointDef_localAnchorA_get(b2RevoluteJointDef self) -&gt; 
+  b2Vec2</p>
+  <dl class="fields">
+    <dt>Get Method:</dt>
+    <dd class="value"><span class="summary-sig"><a href="_Box2D%27-module.html#b2RevoluteJointDef_localAnchorA_get" class="summary-sig-name">_Box2D'.b2RevoluteJointDef_localAnchorA_get</a>(<span class="summary-sig-arg">...</span>)</span>
+        - b2RevoluteJointDef_localAnchorA_get(b2RevoluteJointDef self) -&gt; 
+      b2Vec2
+    </dd>
+    <dt>Set Method:</dt>
+    <dd class="value"><span class="summary-sig"><a href="_Box2D%27-module.html#b2RevoluteJointDef_localAnchorA_set" class="summary-sig-name">_Box2D'.b2RevoluteJointDef_localAnchorA_set</a>(<span class="summary-sig-arg">...</span>)</span>
+        - b2RevoluteJointDef_localAnchorA_set(b2RevoluteJointDef self, b2Vec2 
+      localAnchorA)
+    </dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="localAnchorB"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">localAnchorB</h3>
+  <p>b2RevoluteJointDef_localAnchorB_get(b2RevoluteJointDef self) -&gt; 
+  b2Vec2</p>
+  <dl class="fields">
+    <dt>Get Method:</dt>
+    <dd class="value"><span class="summary-sig"><a href="_Box2D%27-module.html#b2RevoluteJointDef_localAnchorB_get" class="summary-sig-name">_Box2D'.b2RevoluteJointDef_localAnchorB_get</a>(<span class="summary-sig-arg">...</span>)</span>
+        - b2RevoluteJointDef_localAnchorB_get(b2RevoluteJointDef self) -&gt; 
+      b2Vec2
+    </dd>
+    <dt>Set Method:</dt>
+    <dd class="value"><span class="summary-sig"><a href="_Box2D%27-module.html#b2RevoluteJointDef_localAnchorB_set" class="summary-sig-name">_Box2D'.b2RevoluteJointDef_localAnchorB_set</a>(<span class="summary-sig-arg">...</span>)</span>
+        - b2RevoluteJointDef_localAnchorB_set(b2RevoluteJointDef self, b2Vec2 
+      localAnchorB)
+    </dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="referenceAngle"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">referenceAngle</h3>
+  <p>b2RevoluteJointDef_referenceAngle_get(b2RevoluteJointDef self) -&gt; 
+  float32</p>
+  <dl class="fields">
+    <dt>Get Method:</dt>
+    <dd class="value"><span class="summary-sig"><a href="_Box2D%27-module.html#b2RevoluteJointDef_referenceAngle_get" class="summary-sig-name">_Box2D'.b2RevoluteJointDef_referenceAngle_get</a>(<span class="summary-sig-arg">...</span>)</span>
+        - b2RevoluteJointDef_referenceAngle_get(b2RevoluteJointDef self) -&gt; 
+      float32
+    </dd>
+    <dt>Set Method:</dt>
+    <dd class="value"><span class="summary-sig"><a href="_Box2D%27-module.html#b2RevoluteJointDef_referenceAngle_set" class="summary-sig-name">_Box2D'.b2RevoluteJointDef_referenceAngle_set</a>(<span class="summary-sig-arg">...</span>)</span>
+        - b2RevoluteJointDef_referenceAngle_set(b2RevoluteJointDef self, 
+      float32 referenceAngle)
+    </dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="enableLimit"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">enableLimit</h3>
+  <p>b2RevoluteJointDef_enableLimit_get(b2RevoluteJointDef self) -&gt; 
+  bool</p>
+  <dl class="fields">
+    <dt>Get Method:</dt>
+    <dd class="value"><span class="summary-sig"><a href="_Box2D%27-module.html#b2RevoluteJointDef_enableLimit_get" class="summary-sig-name">_Box2D'.b2RevoluteJointDef_enableLimit_get</a>(<span class="summary-sig-arg">...</span>)</span>
+        - b2RevoluteJointDef_enableLimit_get(b2RevoluteJointDef self) -&gt; 
+      bool
+    </dd>
+    <dt>Set Method:</dt>
+    <dd class="value"><span class="summary-sig"><a href="_Box2D%27-module.html#b2RevoluteJointDef_enableLimit_set" class="summary-sig-name">_Box2D'.b2RevoluteJointDef_enableLimit_set</a>(<span class="summary-sig-arg">...</span>)</span>
+        - b2RevoluteJointDef_enableLimit_set(b2RevoluteJointDef self, bool 
+      enableLimit)
+    </dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="lowerAngle"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">lowerAngle</h3>
+  <p>b2RevoluteJointDef_lowerAngle_get(b2RevoluteJointDef self) -&gt; 
+  float32</p>
+  <dl class="fields">
+    <dt>Get Method:</dt>
+    <dd class="value"><span class="summary-sig"><a href="_Box2D%27-module.html#b2RevoluteJointDef_lowerAngle_get" class="summary-sig-name">_Box2D'.b2RevoluteJointDef_lowerAngle_get</a>(<span class="summary-sig-arg">...</span>)</span>
+        - b2RevoluteJointDef_lowerAngle_get(b2RevoluteJointDef self) -&gt; 
+      float32
+    </dd>
+    <dt>Set Method:</dt>
+    <dd class="value"><span class="summary-sig"><a href="_Box2D%27-module.html#b2RevoluteJointDef_lowerAngle_set" class="summary-sig-name">_Box2D'.b2RevoluteJointDef_lowerAngle_set</a>(<span class="summary-sig-arg">...</span>)</span>
+        - b2RevoluteJointDef_lowerAngle_set(b2RevoluteJointDef self, float32 
+      lowerAngle)
+    </dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="upperAngle"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">upperAngle</h3>
+  <p>b2RevoluteJointDef_upperAngle_get(b2RevoluteJointDef self) -&gt; 
+  float32</p>
+  <dl class="fields">
+    <dt>Get Method:</dt>
+    <dd class="value"><span class="summary-sig"><a href="_Box2D%27-module.html#b2RevoluteJointDef_upperAngle_get" class="summary-sig-name">_Box2D'.b2RevoluteJointDef_upperAngle_get</a>(<span class="summary-sig-arg">...</span>)</span>
+        - b2RevoluteJointDef_upperAngle_get(b2RevoluteJointDef self) -&gt; 
+      float32
+    </dd>
+    <dt>Set Method:</dt>
+    <dd class="value"><span class="summary-sig"><a href="_Box2D%27-module.html#b2RevoluteJointDef_upperAngle_set" class="summary-sig-name">_Box2D'.b2RevoluteJointDef_upperAngle_set</a>(<span class="summary-sig-arg">...</span>)</span>
+        - b2RevoluteJointDef_upperAngle_set(b2RevoluteJointDef self, float32 
+      upperAngle)
+    </dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="enableMotor"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">enableMotor</h3>
+  <p>b2RevoluteJointDef_enableMotor_get(b2RevoluteJointDef self) -&gt; 
+  bool</p>
+  <dl class="fields">
+    <dt>Get Method:</dt>
+    <dd class="value"><span class="summary-sig"><a href="_Box2D%27-module.html#b2RevoluteJointDef_enableMotor_get" class="summary-sig-name">_Box2D'.b2RevoluteJointDef_enableMotor_get</a>(<span class="summary-sig-arg">...</span>)</span>
+        - b2RevoluteJointDef_enableMotor_get(b2RevoluteJointDef self) -&gt; 
+      bool
+    </dd>
+    <dt>Set Method:</dt>
+    <dd class="value"><span class="summary-sig"><a href="_Box2D%27-module.html#b2RevoluteJointDef_enableMotor_set" class="summary-sig-name">_Box2D'.b2RevoluteJointDef_enableMotor_set</a>(<span class="summary-sig-arg">...</span>)</span>
+        - b2RevoluteJointDef_enableMotor_set(b2RevoluteJointDef self, bool 
+      enableMotor)
+    </dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="motorSpeed"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">motorSpeed</h3>
+  <p>b2RevoluteJointDef_motorSpeed_get(b2RevoluteJointDef self) -&gt; 
+  float32</p>
+  <dl class="fields">
+    <dt>Get Method:</dt>
+    <dd class="value"><span class="summary-sig"><a href="_Box2D%27-module.html#b2RevoluteJointDef_motorSpeed_get" class="summary-sig-name">_Box2D'.b2RevoluteJointDef_motorSpeed_get</a>(<span class="summary-sig-arg">...</span>)</span>
+        - b2RevoluteJointDef_motorSpeed_get(b2RevoluteJointDef self) -&gt; 
+      float32
+    </dd>
+    <dt>Set Method:</dt>
+    <dd class="value"><span class="summary-sig"><a href="_Box2D%27-module.html#b2RevoluteJointDef_motorSpeed_set" class="summary-sig-name">_Box2D'.b2RevoluteJointDef_motorSpeed_set</a>(<span class="summary-sig-arg">...</span>)</span>
+        - b2RevoluteJointDef_motorSpeed_set(b2RevoluteJointDef self, float32 
+      motorSpeed)
+    </dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="maxMotorTorque"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">maxMotorTorque</h3>
+  <p>b2RevoluteJointDef_maxMotorTorque_get(b2RevoluteJointDef self) -&gt; 
+  float32</p>
+  <dl class="fields">
+    <dt>Get Method:</dt>
+    <dd class="value"><span class="summary-sig"><a href="_Box2D%27-module.html#b2RevoluteJointDef_maxMotorTorque_get" class="summary-sig-name">_Box2D'.b2RevoluteJointDef_maxMotorTorque_get</a>(<span class="summary-sig-arg">...</span>)</span>
+        - b2RevoluteJointDef_maxMotorTorque_get(b2RevoluteJointDef self) -&gt; 
+      float32
+    </dd>
+    <dt>Set Method:</dt>
+    <dd class="value"><span class="summary-sig"><a href="_Box2D%27-module.html#b2RevoluteJointDef_maxMotorTorque_set" class="summary-sig-name">_Box2D'.b2RevoluteJointDef_maxMotorTorque_set</a>(<span class="summary-sig-arg">...</span>)</span>
+        - b2RevoluteJointDef_maxMotorTorque_set(b2RevoluteJointDef self, 
+      float32 maxMotorTorque)
+    </dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="anchor"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">anchor</h3>
+  <p>The anchor in world coordinates. Getting the property depends on 
+  either bodyA and localAnchorA or bodyB and localAnchorB. Setting the 
+  property requires that both bodies be set.</p>
+  <dl class="fields">
+    <dt>Get Method:</dt>
+    <dd class="value"><span class="summary-sig"><a href="Box2D.Box2D.b2RevoluteJointDef-class.html#__get_anchor" class="summary-sig-name" onclick="show_private();">__get_anchor</a>(<span class="summary-sig-arg">self</span>)</span>
+    </dd>
+    <dt>Set Method:</dt>
+    <dd class="value"><span class="summary-sig"><a href="Box2D.Box2D.b2RevoluteJointDef-class.html#__set_anchor" class="summary-sig-name" onclick="show_private();">__set_anchor</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">value</span>)</span>
+    </dd>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Sat Oct  6 22:20:07 2012
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>
