@@ -15,12 +15,14 @@ from player import Player
 
 from weapons import Weapons
 
+from physics import Physics
+
 from constants import PLAYER_SPEED, PP_HEIGHT, PP_WIDTH
 
 from sfml import Keyboard, IntRect, Sprite, Texture
 
-TESTLEVEL = [   ['#', '#', '[', '=', ']', '#', '#', '#', '#', '#', '#'],
-                ['#', '.', '.', '.', '.', '#', '.', '.', '$', '.', '#'],
+TESTLEVEL = [   ['#', ']', '[', '=', ']', '#', '#', '#', '#', '#', '#'],
+                [']', '.', '.', '.', '.', '#', '.', '.', '$', '.', '#'],
                 ['#', '.', '$', '.', '.', '$', '.', '.', '$', '.', '#'],
                 ['#', '.', '.', '.', '.', '#', '.', '.', '.', '.', '#'],
                 ['#', '.', '$', '.', '.', '%', '.', '.', '$', '.', '#'],
@@ -39,6 +41,7 @@ class Gameworld(object):
         self.pistol = Weapons(ident = 'pistol', ammo = 10, enabled = 1)
         self.knife = Weapons(ident = 'knife', ammo = 0, enabled = 1)
         self.player = Player(gamemap = self.current_level, weapon = self.knife)
+        self.physics = Physics(player = self.player, level = self.current_level)
 
     def create_dict_map(self, width = TESTLEVEL_WIDTH, height = TESTLEVEL_HEIGHT, level_array = TESTLEVEL):
         dict_map = {(x,y):Tile((x,y)) for x in range(width) for y in range(height)} 

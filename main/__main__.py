@@ -9,6 +9,7 @@ Should be called via a bash script in folder above"""
 # DEVNOTES
 ###
 
+# TODO - Screenshot key
 # TODO - Write startup scripts // log clear // win build file
 # TODO - Implement logging
 # TODO - Make the doors slide [Jday requied]
@@ -17,6 +18,7 @@ Should be called via a bash script in folder above"""
 # TODO - Shooting
 # TODO - AI - Alien
 # TODO - AI - Robot
+# TODO - Optimize HUD.prepare()
 
 ###
 # LOGGING
@@ -77,7 +79,7 @@ def draw_fps(framein):
         clock.restart()
         time = time/1000
         fps = int(framein/time)+1
-        #logg.info('Frame: ' + str(frame) + '. FPS: ' + str(fps))
+        logg.info('Frame: ' + str(frame) + '. FPS: ' + str(fps))
         frame = 0
 
     return fps
@@ -176,9 +178,11 @@ def main():
 
     window.close()
 
+    logg.info('Terminating. Have a nice day.')
+
 if __name__ == '__main__':
     main()
 
 else:
-    logg.info['This file is not supposed to be imported.']
+    logg.info('This file is not supposed to be imported.')
     print('This file is not supposed to be imported.')

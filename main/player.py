@@ -31,8 +31,8 @@ class Player(object):
             self.heading -= 360
 
     def move(self, momentum):
-        dirx = cos(radians(self.heading))
-        diry = sin(radians(self.heading))
+        dirx = -cos(radians(self.heading))
+        diry = -sin(radians(self.heading))
 
         new_x = self.ux + int(dirx*momentum)
         new_y = self.uy + int(diry*momentum)
@@ -50,14 +50,14 @@ class Player(object):
         if momentum < 0:
             heading = self.heading - 90
 
-            dirx = cos(radians(heading))
-            diry = sin(radians(heading))
+            dirx = -cos(radians(heading))
+            diry = -sin(radians(heading))
 
         elif momentum > 0:
             heading = self.heading + 90
 
-            dirx = -cos(radians(heading))
-            diry = -sin(radians(heading))
+            dirx = cos(radians(heading))
+            diry = sin(radians(heading))
 
         # if heading < 0:
         #     heading += 360

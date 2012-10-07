@@ -6,3 +6,6 @@ main/__pycache__
 *.png
 x64.sh
 x32.sh
+
+/main/Box2D
+/main/physics.py

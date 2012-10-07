@@ -32,16 +32,16 @@ class Raycaster(object):
 
             #set the tdx and tdy according to the direction of the vector
             if dx > 0:
-                tdx = 1
-            elif dx < 0:
                 tdx = -1
+            elif dx < 0:
+                tdx = 1
             else:
                 tdx = 0
 
             if dy > 0:
-                tdy = 1
-            elif dy < 0:
                 tdy = -1
+            elif dy < 0:
+                tdy = 1
             else:
                 tdy = 0
 
