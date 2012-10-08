@@ -160,7 +160,7 @@ class Raycaster(object):
                         origin_x += tdx
                 else:
                     cy += 0.000000000000001
-                    print("now that's rare")
+                    # print("now that's rare")
 
             # if gamemap[(origin_x, origin_y)].door:
             #     distance = abs(int((distance * 64 + 24) * math.cos(math.radians(abs(-FOV/2 + ANGLE_SHIFT*(index))))-.5))

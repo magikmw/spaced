@@ -79,7 +79,7 @@ def draw_fps(framein):
         clock.restart()
         time = time/1000
         fps = int(framein/time)+1
-        logg.info('FPS: ' + str(fps))
+        # logg.info('FPS: ' + str(fps))
         frame = 0
 
     return fps
@@ -155,7 +155,15 @@ def main():
 
         hud.display(window)
 
-        game.player.attack = False
+
+        if game.player.attack_delay > 0 and game.player.attack == True:
+            game.player.attack_delay -= 1
+        elif game.player.attack == True and game.player.attack_delay == 0:
+            game.player.attack = False
+            game.player.attack_delay = 2
+        elif game.player.attack == False and game.player.attack_delay > 0:
+            game.player.attack_delay -= 1
+
 
         debug_txt = text('['+str(draw_fps(frame))+'] ' + str("{0:.2f}".format(game.player.ux)) + '(' + str(game.player.x) + '),'+str("{0:.2f}".format(game.player.uy)) + '(' + str(game.player.y) + '):' + str(game.player.heading), style = 1)
         window.draw(debug_txt)
@@ -172,8 +180,14 @@ def main():
                     # print('removing doors')
                     game.doors.remove(door)
 
+        game.physics.world.ClearForces()
+
         if not nofocus:
             player_action = game.handle_keys()
+
+        game.physics.world.Step(1.0/60.0, 10, 8)
+
+        game.player.update_position()
 
         window.display()
 

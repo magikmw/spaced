@@ -17,11 +17,15 @@ class Door(object):
                 if self.openess > 1: self.openess = 1
             elif self.openess >= 1:
                 self.owner.blocked = False
+                self.owner.skin = None
+                self.owner.body.active = False
                 self.timer -= 1
                 # print((player.x, player.y) != self.owner.position)
                 # print(self.owner.position)
                 if self.timer <= 0 and (self.player.x, self.player.y) != self.owner.position:
                     self.owner.blocked = True
+                    self.owner.skin = 2
+                    self.owner.body.active = True
                     self.state = -1
         
         elif self.state == -1:

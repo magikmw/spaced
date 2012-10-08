@@ -84,6 +84,10 @@ class Gameworld(object):
 
     def handle_keys(self):
         """Simple key handling. Does not return values, except for the ESC key!"""
+
+        walk = False
+        strafe = False
+
         if Keyboard.is_key_pressed(Keyboard.ESCAPE):
             return 'quit'
 
@@ -93,20 +97,25 @@ class Gameworld(object):
             self.player.turn(-TURN_SPEED)
 
         if Keyboard.is_key_pressed(Keyboard.A):
-            self.player.strafe(PLAYER_SPEED)
+            strafe = True
+            self.player.strafe(PLAYER_SPEED, "left", walk)
         elif Keyboard.is_key_pressed(Keyboard.D):
-            self.player.strafe(-PLAYER_SPEED)
+            strafe = True
+            self.player.strafe(PLAYER_SPEED, "right", walk)
 
         if Keyboard.is_key_pressed(Keyboard.W):
-            self.player.move(PLAYER_SPEED)
+            walk = True
+            self.player.move(PLAYER_SPEED, "forward", strafe)
         elif Keyboard.is_key_pressed(Keyboard.S):
-            self.player.move(-PLAYER_SPEED)
+            walk = True
+            self.player.move(PLAYER_SPEED, "backward", strafe)
 
         if Keyboard.is_key_pressed(Keyboard.SPACE):
             self.open_doors()
 
-        if Keyboard.is_key_pressed(Keyboard.R_CONTROL):
+        if Keyboard.is_key_pressed(Keyboard.R_CONTROL) and self.player.attack_delay == 0 and self.player.attack == False:
             self.player.attack = True
+            self.player.attack_delay = 6
 
         if Keyboard.is_key_pressed(Keyboard.NUM1) and self.knife.enabled == 1:
             self.player.weapon = self.knife
