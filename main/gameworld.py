@@ -145,7 +145,7 @@ class Gameworld(object):
         for i in range(PP_WIDTH):
             wall_sprite = sprite.copy()
             wall_sprite.position = (i, PP_HEIGHT/2 - 32)
-            wall_sprite.texture_rect = IntRect(0,0,1,64)
+            wall_sprite.set_texture_rect(IntRect(0,0,1,64))
             wall_sprites.append(wall_sprite)
 
         return wall_sprites

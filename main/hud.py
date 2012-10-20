@@ -73,36 +73,36 @@ class Hud(object):
 
         #faces
         if self.player.hp == 0:
-            self.face.texture_rect = IntRect(129, 0, 64, 64)
+            self.face.set_texture_rect(IntRect(129, 0, 64, 64))
         elif self.player.hp > 0 and self.player.hp < 50:
-            self.face.texture_rect = IntRect(65, 0, 64, 64)
+            self.face.set_texture_rect(IntRect(65, 0, 64, 64))
         else:
-            self.face.texture_rect = IntRect(0, 0, 64, 64)
+            self.face.set_texture_rect(IntRect(0, 0, 64, 64))
 
         #hud weapons indicator
         if self.player.weapon.ident == 'rifle':
-            self.hudweapon.texture_rect = IntRect(0, 85, 65, 42)
+            self.hudweapon.set_texture_rect(IntRect(0, 85, 65, 42))
         elif self.player.weapon.ident == 'pistol':
-            self.hudweapon.texture_rect = IntRect(0, 43, 65, 42)
+            self.hudweapon.set_texture_rect(IntRect(0, 43, 65, 42))
         else:
-            self.hudweapon.texture_rect = IntRect(0, 0, 65, 42)
+            self.hudweapon.set_texture_rect(IntRect(0, 0, 65, 42))
 
         #in hand weapon indicator
         if self.player.attack == True:
             if self.player.weapon.ident == 'rifle':
-                self.weapon.texture_rect = IntRect(64, 128, 64, 64)
+                self.weapon.set_texture_rect(IntRect(64, 128, 64, 64))
             elif self.player.weapon.ident == 'pistol':
-                self.weapon.texture_rect = IntRect(64, 64, 64, 64)
+                self.weapon.set_texture_rect(IntRect(64, 64, 64, 64))
             else:
-                self.weapon.texture_rect = IntRect(64, 0, 64, 64)
+                self.weapon.set_texture_rect(IntRect(64, 0, 64, 64))
 
         else:
             if self.player.weapon.ident == 'rifle':
-                self.weapon.texture_rect = IntRect(0, 128, 64, 64)
+                self.weapon.set_texture_rect(IntRect(0, 128, 64, 64))
             elif self.player.weapon.ident == 'pistol':
-                self.weapon.texture_rect = IntRect(0, 64, 64, 64)
+                self.weapon.set_texture_rect(IntRect(0, 64, 64, 64))
             else:
-                self.weapon.texture_rect = IntRect(0, 0, 64, 64)
+                self.weapon.set_texture_rect(IntRect(0, 0, 64, 64))
 
 
         #numbers
@@ -141,9 +141,9 @@ def numbers(digit, sprite):
     """Change the sprite to the correct digit"""
 
     if digit == 0:
-        sprite.texture_rect = IntRect(0, 0, 13, 20)
+        sprite.set_texture_rect(IntRect(0, 0, 13, 20))
     else:
-        sprite.texture_rect = IntRect((13 * digit)+1, 0, 13, 20)
+        sprite.set_texture_rect(IntRect((13 * digit)+1, 0, 13, 20))
 
 def num_digits(pos, number):
     """Pull a digit from a number by certain position.

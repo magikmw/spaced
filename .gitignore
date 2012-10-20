@@ -2,9 +2,6 @@
 main/__pycache__
 *.pyc
 *.pyo
-32_sfml.cpython-32mu.so
-64_sfml.cpython-32mu.so
-sfml.cpython-32mu.so
 *.png
 x64.sh
 x32.sh
