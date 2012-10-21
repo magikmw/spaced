@@ -10,10 +10,9 @@ Should be called via a bash script in folder above"""
 ###
 
 # TODO - Screenshot key
-# TODO - Write startup scripts // log clear // win build file
+# TODO - Write log clear // win build file
 # TODO - Implement logging
 # TODO - Make the doors slide [Jday requied]
-# TODO - Wall-sliding (physics)
 # TODO - Static enemies and items
 # TODO - Shooting
 # TODO - AI - Alien
@@ -105,13 +104,6 @@ def main():
     window.framerate_limit = 61
     window.view = main_view
 
-    #Create an instance for all game variables and loop functions
-    # and set the level to TESTLEVEL
-    game = Gameworld()
-    game.create_dict_map()
-    game.player.gamemap = game.current_level
-    game.init_physics()
-
     # INITIALIZE TEXTURES HERE OR AFTER \o/
     TEXTURE_WALL = Texture.load_from_file('main/walls.png')
     TEXTURE_BAR = Texture.load_from_file('main/bar.png')
@@ -119,6 +111,13 @@ def main():
     TEXTURE_FACES = Texture.load_from_file('main/faces.png')
     TEXTURE_NUMBERS = Texture.load_from_file('main/numbers.png')
     TEXTURE_WEAPONS = Texture.load_from_file('main/weapons.png')
+
+    #Create an instance for all game variables and loop functions
+    # and set the level to TESTLEVEL
+    game = Gameworld()
+    game.create_dict_map()
+    game.player.gamemap = game.current_level
+    game.init_physics()
 
     #prepare the hud
 
@@ -138,7 +137,7 @@ def main():
     nofocus = False
 
     ##
-    #MAIN LOOP
+    # MAIN LOOP
     ##
 
     logg.info('Main loop starting...')

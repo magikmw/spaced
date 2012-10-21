@@ -18,12 +18,14 @@ class Raycaster(object):
         self.player = player
         self.sprites = sprites
         self.gamemap = gamemap
+        self.distances = []
 
     def cast_rays(self):
         alpha = self.player.heading - FOV/2
         if alpha < 0:
             alpha += 360
         columns = []
+        self.distances = []
 
         for index in range(PP_WIDTH):
             #figure out the vector from the angle
@@ -168,6 +170,7 @@ class Raycaster(object):
             #     distance = abs(int(distance * 64 * math.cos(math.radians(abs(-FOV/2 + ANGLE_SHIFT*(index))))-.5))
 
             distance = abs(int(distance * 64 * cos(radians(abs(-FOV/2 + ANGLE_SHIFT*(index))))-.5))
+            self.distances.append(distance)
 
             # Scale the distance to the grid unit, fix the fisheye
             # print(distance)

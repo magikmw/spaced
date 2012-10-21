@@ -17,9 +17,15 @@ from weapons import Weapons
 
 from physics import Physics
 
+from entity import Entity
+
 from constants import PLAYER_SPEED, TURN_SPEED, PP_HEIGHT, PP_WIDTH, HEAD_BOB
 
+# from __main__ import TEXTURE_ENEMIES
+
 from sfml import Keyboard, IntRect, Sprite, Texture, Event
+
+TEXTURE_ENEMIES = Texture.load_from_file('main/test.png')
 
 TESTLEVEL = [   ['#', ']', '[', '=', ']', '#', '#', '#', '#', '#', '#'],
                 [']', '.', '.', '.', '.', '#', '.', '.', '$', '.', '#'],
@@ -53,6 +59,9 @@ class Gameworld(object):
             self.bob_top = True
         else:
             self.bob_top = 'no bobbing'
+        self.entities = []
+        test = Entity(2, 12, Sprite(TEXTURE_ENEMIES), 0, 0)
+        self.entities.append(test)
 
     def create_dict_map(self, width = TESTLEVEL_WIDTH, height = TESTLEVEL_HEIGHT, level_array = TESTLEVEL):
         dict_map = {(x,y):Tile((x,y)) for x in range(width) for y in range(height)} 
