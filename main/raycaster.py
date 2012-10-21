@@ -182,7 +182,7 @@ class Raycaster(object):
         # print('stop')
         return columns
 
-    def texture_slices(self, columns, sprites):
+    def texture_slices(self, columns, sprites, bob):
         x = 0
 
         for column in columns:
@@ -197,7 +197,7 @@ class Raycaster(object):
                 sprites[x].color = Color.WHITE
 
             sprites[x].set_texture_rect(IntRect(column[2]+64*column[1],0,1,64))
-            sprites[x].position = (x, PP_HEIGHT/2 - height/2)
+            sprites[x].position = (x, PP_HEIGHT/2 - height/2 + bob)
             sprites[x].scale = (1, height / 64)
             x += 1
 

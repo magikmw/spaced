@@ -26,6 +26,8 @@ class Player(object):
         self.attack = False
         self.attack_delay = 0
         self.body = None
+        self.bob = 0
+        self.strafing = False
 
     def turn(self, direction):
         self.heading += direction
@@ -34,7 +36,7 @@ class Player(object):
         elif self.heading > 360:
             self.heading -= 360
 
-    def move(self,momentum, direction, strafe):
+    def move(self,momentum, direction):
         if direction == "forward":
             dirx = -cos(radians(self.heading))
             diry = -sin(radians(self.heading))
@@ -43,14 +45,14 @@ class Player(object):
             dirx = cos(radians(self.heading))
             diry = sin(radians(self.heading))            
 
-        if strafe == True:
+        if self.strafing == True:
             force = b2.b2Vec2(dirx*momentum/2, diry*momentum/2)
         else:
             force = b2.b2Vec2(dirx*momentum, diry*momentum)
 
         self.body.ApplyLinearImpulse(force, self.body.position)
 
-    def strafe(self, momentum, direction, walk):
+    def strafe(self, momentum, direction):
         if direction == "right":
 
             dirx = cos(radians(self.heading-90))
@@ -61,11 +63,7 @@ class Player(object):
             dirx = cos(radians(self.heading+90))
             diry = sin(radians(self.heading+90))
 
-        if walk == True:
-            force = b2.b2Vec2(dirx*momentum/2, diry*momentum/2)
-        else:
-            force = b2.b2Vec2(dirx*momentum, diry*momentum)
-
+        force = b2.b2Vec2(dirx*momentum, diry*momentum)
 
         self.body.ApplyLinearImpulse(force, self.body.position)
 

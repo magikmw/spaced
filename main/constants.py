@@ -22,4 +22,5 @@ BAR_HEIGHT   = 50
 PLAYER_SPEED = 0.05
 TURN_SPEED = 3
 
-TEXTURE_WALL = 'main/walls.png'
+#configuration options
+HEAD_BOB = True

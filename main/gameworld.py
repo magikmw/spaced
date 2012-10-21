@@ -17,9 +17,9 @@ from weapons import Weapons
 
 from physics import Physics
 
-from constants import PLAYER_SPEED, TURN_SPEED, PP_HEIGHT, PP_WIDTH
+from constants import PLAYER_SPEED, TURN_SPEED, PP_HEIGHT, PP_WIDTH, HEAD_BOB
 
-from sfml import Keyboard, IntRect, Sprite, Texture
+from sfml import Keyboard, IntRect, Sprite, Texture, Event
 
 TESTLEVEL = [   ['#', ']', '[', '=', ']', '#', '#', '#', '#', '#', '#'],
                 [']', '.', '.', '.', '.', '#', '.', '.', '$', '.', '#'],
@@ -28,9 +28,17 @@ TESTLEVEL = [   ['#', ']', '[', '=', ']', '#', '#', '#', '#', '#', '#'],
                 ['#', '.', '$', '.', '.', '%', '.', '.', '$', '.', '#'],
                 ['#', '.', '.', '.', '.', '#', '.', '.', '$', '.', '#'],
                 ['#', '.', '.', '.', '.', '$', '.', '.', '.', '.', '#'],
-                ['#', '#', '[', '=', ']', '#', '#', '#', '#', '#', '#']]
+                ['#', '%', '#', '#', '#', '#', '#', '%', '#', '#', '#'],
+                ['#', '.', '.', '.', '.', '#', '.', '.', '.', '.', '#'],
+                ['$', '.', '.', '.', '.', '#', '.', '.', '.', '.', '#'],
+                ['$', '.', '.', '.', '.', '%', '.', '.', '.', '.', '#'],
+                ['$', '.', '.', '.', '.', '%', '.', '.', '.', '.', '#'],
+                ['$', '.', '.', '.', '.', '#', '.', '.', '.', '.', '#'],
+                ['#', '.', '.', '.', '.', '#', '.', '.', '.', '.', '#'],
+                ['#', '.', '.', '.', '.', '#', '.', '.', '.', '.', '#'],
+                ['#', '[', '=', '=', ']', '$', '#', '#', '#', '#', '#']]
 
-TESTLEVEL_WIDTH = 8
+TESTLEVEL_WIDTH = 16
 TESTLEVEL_HEIGHT = 11
 
 class Gameworld(object):
@@ -41,6 +49,10 @@ class Gameworld(object):
         self.pistol = Weapons(ident = 'pistol', ammo = 10, enabled = 1)
         self.knife = Weapons(ident = 'knife', ammo = 0, enabled = 1)
         self.player = Player(gamemap = self.current_level, weapon = self.knife)
+        if HEAD_BOB == True:
+            self.bob_top = True
+        else:
+            self.bob_top = 'no bobbing'
 
     def create_dict_map(self, width = TESTLEVEL_WIDTH, height = TESTLEVEL_HEIGHT, level_array = TESTLEVEL):
         dict_map = {(x,y):Tile((x,y)) for x in range(width) for y in range(height)} 
@@ -69,13 +81,14 @@ class Gameworld(object):
         self.current_level = dict_map
 
     def open_doors(self):
+
         dirx = math.cos(math.radians(self.player.heading))
         diry = math.sin(math.radians(self.player.heading))
 
         new_x = int(self.player.ux + -dirx*1)
         new_y = int(self.player.uy + -diry*1)
 
-        if self.current_level[(new_x, new_y)].door and len(self.doors) == 0:
+        if self.current_level[(new_x, new_y)].door and not self.current_level[(new_x, new_y)].door in(self.doors):
             self.current_level[(new_x, new_y)].door.state = 1
             self.doors.append(self.current_level[(new_x, new_y)].door)
 
@@ -84,9 +97,6 @@ class Gameworld(object):
 
     def handle_keys(self):
         """Simple key handling. Does not return values, except for the ESC key!"""
-
-        walk = False
-        strafe = False
 
         if Keyboard.is_key_pressed(Keyboard.ESCAPE):
             return 'quit'
@@ -97,25 +107,45 @@ class Gameworld(object):
             self.player.turn(-TURN_SPEED)
 
         if Keyboard.is_key_pressed(Keyboard.A):
-            strafe = True
-            self.player.strafe(PLAYER_SPEED, "left", walk)
+            self.player.strafing = True
+            self.player.strafe(PLAYER_SPEED, "left")
+
         elif Keyboard.is_key_pressed(Keyboard.D):
-            strafe = True
-            self.player.strafe(PLAYER_SPEED, "right", walk)
+            self.player.strafing = True
+            self.player.strafe(PLAYER_SPEED, "right")           
 
         if Keyboard.is_key_pressed(Keyboard.W):
-            walk = True
-            self.player.move(PLAYER_SPEED, "forward", strafe)
+            self.player.move(PLAYER_SPEED, "forward")
+            if self.bob_top == True:
+                if self.player.bob < 5:
+                    self.player.bob += .5
+                else:
+                    self.bob_top = False
+            elif self.bob_top == False:
+                if self.player.bob > -5:
+                    self.player.bob -= .5
+                else:
+                    self.bob_top = True
+
         elif Keyboard.is_key_pressed(Keyboard.S):
-            walk = True
-            self.player.move(PLAYER_SPEED, "backward", strafe)
+            self.player.move(PLAYER_SPEED, "backward")
+            if self.bob_top == True:
+                if self.player.bob < 5:
+                    self.player.bob += .5
+                else:
+                    self.bob_top = False
+            elif self.bob_top == False:
+                if self.player.bob > -5:
+                    self.player.bob -= .5
+                else:
+                    self.bob_top = True            
 
         if Keyboard.is_key_pressed(Keyboard.SPACE):
             self.open_doors()
 
         if Keyboard.is_key_pressed(Keyboard.R_CONTROL) and self.player.attack_delay == 0 and self.player.attack == False:
             self.player.attack = True
-            self.player.attack_delay = 6
+            self.player.attack_delay = 15
 
         if Keyboard.is_key_pressed(Keyboard.NUM1) and self.knife.enabled == 1:
             self.player.weapon = self.knife

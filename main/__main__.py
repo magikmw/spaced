@@ -69,9 +69,11 @@ logg.info('Hud class imported')
 clock = Clock()
 frame = 0
 fps = 0
+average_fps = 0
+all_frames = 0
 
 def draw_fps(framein):
-    global frame, fps
+    global frame, fps, all_frames, average_fps
 
     frame += 1
     time = clock.elapsed_time.as_milliseconds()
@@ -81,6 +83,9 @@ def draw_fps(framein):
         fps = int(framein/time)+1
         # logg.info('FPS: ' + str(fps))
         frame = 0
+
+    average_fps += fps
+    all_frames += 1
 
     return fps
 
@@ -148,13 +153,20 @@ def main():
             elif event.type == Event.GAINED_FOCUS:
                 nofocus = False
 
+            if event.type == Event.KEY_RELEASED:
+                if game.player.bob > 0:
+                    game.player.bob -= 1
+                elif game.player.bob < 0:
+                    game.player.bob += 1
+
+                game.player.strafing = False
+
         window.clear(Color(235,235,235,255))
 
         for sprite in wall_sprites:
             window.draw(sprite)
 
         hud.display(window)
-
 
         if game.player.attack_delay > 0 and game.player.attack == True:
             game.player.attack_delay -= 1
@@ -168,7 +180,7 @@ def main():
         debug_txt = text('['+str(draw_fps(frame))+'] ' + str("{0:.2f}".format(game.player.ux)) + '(' + str(game.player.x) + '),'+str("{0:.2f}".format(game.player.uy)) + '(' + str(game.player.y) + '):' + str(game.player.heading), style = 1)
         window.draw(debug_txt)
 
-        wall_sprites = rays.texture_slices(rays.cast_rays(), wall_sprites)
+        wall_sprites = rays.texture_slices(rays.cast_rays(), wall_sprites, game.player.bob)
 
         if len(game.doors) != 0:
             # print('lol doors')
@@ -194,6 +206,7 @@ def main():
     window.close()
 
     logg.info('Terminating. Have a nice day.')
+    logg.info('Average FPS: %s', round(average_fps/all_frames, 2))
 
 if __name__ == '__main__':
     main()
