@@ -64,3 +64,27 @@ class Physics(object):
         player_body.linearDamping = 3.5
 
         player.body = self.world.CreateBody(player_body)
+
+        mob_shape = b2.b2CircleShape()
+        mob_shape.radius = 0.3*2
+
+        mob_fixture = b2.b2FixtureDef()
+        mob_fixture.shape = mob_shape
+        mob_fixture.density = 1
+        mob_fixture.friction = 0.5
+        mob_fixture.reistitution = 5
+
+        self.mob_body = b2.b2BodyDef()
+        self.mob_body.type = b2.b2_dynamicBody
+        # self.mob_body.type = b2.b2_staticBody
+        self.mob_body.linearDamping = 3.5/2
+        self.mob_body.allowSleep = True
+        self.mob_body.awake = True
+        self.mob_body.fixtures = [mob_fixture]
+        self.mob_body.angle = radians(0)
+
+    def mob_bodies(self, entities):
+        for entity in entities:
+            self.mob_body.position = (entity.ux, entity.uy)
+
+            entity.body = self.world.CreateBody(self.mob_body)

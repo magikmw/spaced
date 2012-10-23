@@ -13,11 +13,13 @@ Should be called via a bash script in folder above"""
 # TODO - Write log clear // win build file
 # TODO - Implement logging
 # TODO - Make the doors slide [Jday requied]
-# TODO - Static enemies and items
+# TODO - Items
 # TODO - Shooting
 # TODO - AI - Alien
 # TODO - AI - Robot
 # TODO - Optimize HUD.prepare()
+# TODO - Enemy sides - sprites
+# FIX - Head bobbing + sprites
 
 ###
 # LOGGING
@@ -111,13 +113,15 @@ def main():
     TEXTURE_FACES = Texture.load_from_file('main/faces.png')
     TEXTURE_NUMBERS = Texture.load_from_file('main/numbers.png')
     TEXTURE_WEAPONS = Texture.load_from_file('main/weapons.png')
+    TEXTURE_ENEMIES = Texture.load_from_file('main/test.png')
 
     #Create an instance for all game variables and loop functions
     # and set the level to TESTLEVEL
-    game = Gameworld()
+    game = Gameworld(TEXTURE_ENEMIES)
     game.create_dict_map()
     game.player.gamemap = game.current_level
     game.init_physics()
+    game.physics.mob_bodies(game.entities)
 
     #prepare the hud
 
@@ -143,6 +147,8 @@ def main():
     logg.info('Main loop starting...')
     while running:
 
+        #iterate events
+
         for event in window.iter_events():
             if event.type == Event.CLOSED or player_action == 'quit':
                 running = False
@@ -153,19 +159,46 @@ def main():
                 nofocus = False
 
             if event.type == Event.KEY_RELEASED:
-                if game.player.bob > 0:
+                if game.player.bob > 0:     #level the headbobbing
                     game.player.bob -= 1
                 elif game.player.bob < 0:
                     game.player.bob += 1
 
-                game.player.strafing = False
+                game.player.strafing = False 
+                    #disable speed limiter for moving in 2 axii
 
-        window.clear(Color(235,235,235,255))
+        window.clear(Color(235,235,235,255)) #clear the window of everything
 
-        for sprite in wall_sprites:
+        for sprite in wall_sprites: #draw walls
             window.draw(sprite)
 
-        hud.display(window)
+        #draw entities here
+        for entity in game.entities:
+            if entity.visible == True:
+                for sprite_slice in entity.sprite:
+                    window.draw(sprite_slice)
+
+        hud.display(window) #draw the hud
+
+        debug_txt = text('['+str(draw_fps(frame))+'] ' + str("{0:.2f}".format(game.player.ux)) + '(' + str(game.player.x) + '),'+str("{0:.2f}".format(game.player.uy)) + '(' + str(game.player.y) + '):' + str(game.player.heading), style = 1)
+        window.draw(debug_txt)
+
+        wall_sprites = rays.texture_slices(rays.cast_rays(), wall_sprites, game.player.bob) #determine which walls to display
+
+        #determine wich entities to display and prepare
+        for entity in game.entities: #calculate the distance of entities to the player
+            entity.distance_to_player(game.player)
+            # print(str(round(entity.distance, 2)) + " " + str(entity.x) + "," + str(entity.y))
+
+        game.entities.sort(key=lambda x: x.distance, reverse=True) #sort entities based on the distance
+
+        for entity in game.entities:
+            entity.set_sprite_for_display(game.player, rays.distances)
+
+
+        ###
+        # TIMERS
+        ###
 
         if game.player.attack_delay > 0 and game.player.attack == True:
             game.player.attack_delay -= 1
@@ -174,12 +207,6 @@ def main():
             game.player.attack_delay = 2
         elif game.player.attack == False and game.player.attack_delay > 0:
             game.player.attack_delay -= 1
-
-
-        debug_txt = text('['+str(draw_fps(frame))+'] ' + str("{0:.2f}".format(game.player.ux)) + '(' + str(game.player.x) + '),'+str("{0:.2f}".format(game.player.uy)) + '(' + str(game.player.y) + '):' + str(game.player.heading), style = 1)
-        window.draw(debug_txt)
-
-        wall_sprites = rays.texture_slices(rays.cast_rays(), wall_sprites, game.player.bob)
 
         if len(game.doors) != 0:
             # print('lol doors')
@@ -194,13 +221,15 @@ def main():
         game.physics.world.ClearForces()
 
         if not nofocus:
-            player_action = game.handle_keys()
+            player_action = game.handle_keys() #player input
 
         game.physics.world.Step(1.0/60.0, 10, 8)
 
         game.player.update_position()
+        for entity in game.entities:
+            entity.update_position()
 
-        window.display()
+        window.display() #blit to window
 
     window.close()
 

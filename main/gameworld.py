@@ -23,9 +23,7 @@ from constants import PLAYER_SPEED, TURN_SPEED, PP_HEIGHT, PP_WIDTH, HEAD_BOB
 
 # from __main__ import TEXTURE_ENEMIES
 
-from sfml import Keyboard, IntRect, Sprite, Texture, Event
-
-TEXTURE_ENEMIES = Texture.load_from_file('main/test.png')
+from sfml import Keyboard, IntRect, Sprite, Event
 
 TESTLEVEL = [   ['#', ']', '[', '=', ']', '#', '#', '#', '#', '#', '#'],
                 [']', '.', '.', '.', '.', '#', '.', '.', '$', '.', '#'],
@@ -37,8 +35,8 @@ TESTLEVEL = [   ['#', ']', '[', '=', ']', '#', '#', '#', '#', '#', '#'],
                 ['#', '%', '#', '#', '#', '#', '#', '%', '#', '#', '#'],
                 ['#', '.', '.', '.', '.', '#', '.', '.', '.', '.', '#'],
                 ['$', '.', '.', '.', '.', '#', '.', '.', '.', '.', '#'],
-                ['$', '.', '.', '.', '.', '%', '.', '.', '.', '.', '#'],
-                ['$', '.', '.', '.', '.', '%', '.', '.', '.', '.', '#'],
+                ['$', '.', '.', '.', '.', '.', '.', '.', '.', '.', '#'],
+                ['$', '.', '.', '.', '.', '.', '.', '.', '.', '.', '#'],
                 ['$', '.', '.', '.', '.', '#', '.', '.', '.', '.', '#'],
                 ['#', '.', '.', '.', '.', '#', '.', '.', '.', '.', '#'],
                 ['#', '.', '.', '.', '.', '#', '.', '.', '.', '.', '#'],
@@ -48,20 +46,25 @@ TESTLEVEL_WIDTH = 16
 TESTLEVEL_HEIGHT = 11
 
 class Gameworld(object):
-    def __init__(self):
+    def __init__(self, texture_enemies):
         self.doors = []
         self.current_level = None
         self.rifle = Weapons(ident = 'rifle', ammo = 50, enabled = 1)
         self.pistol = Weapons(ident = 'pistol', ammo = 10, enabled = 1)
         self.knife = Weapons(ident = 'knife', ammo = 0, enabled = 1)
         self.player = Player(gamemap = self.current_level, weapon = self.knife)
+        
         if HEAD_BOB == True:
             self.bob_top = True
         else:
             self.bob_top = 'no bobbing'
+
         self.entities = []
-        test = Entity(2, 12, Sprite(TEXTURE_ENEMIES), 0, 0)
-        self.entities.append(test)
+        #8-14 x, 6-9 y
+        for x in range(8,14):
+            for y in range(6,9):
+                test = Entity(x, y, texture_enemies, 0, 0)
+                self.entities.append(test)
 
     def create_dict_map(self, width = TESTLEVEL_WIDTH, height = TESTLEVEL_HEIGHT, level_array = TESTLEVEL):
         dict_map = {(x,y):Tile((x,y)) for x in range(width) for y in range(height)} 

@@ -12,11 +12,11 @@ import Box2D as b2
 class Player(object):
     """The player. Should be ok to reuse for the main thing
     """
-    def __init__(self, gamemap, weapon, x=2, y=2, heading=270, deck = 1, hp = 100, score = 0):
+    def __init__(self, gamemap, weapon, x=4, y=4, heading=180, deck = 1, hp = 100, score = 0):
         self.x = x #x and y are the grid coordinates
         self.y = y
-        self.ux = x * 1.5 #ux and uy are the unit coordinates
-        self.uy = y * 1.5
+        self.ux = x + .5 #ux and uy are the unit coordinates
+        self.uy = y + .5
         self.heading = heading
         self.gamemap = gamemap
         self.deck = deck
