@@ -3,12 +3,13 @@
 
 class Door(object):
     """Basic doors"""
-    def __init__(self, player, openess = 0, timer = 180, incrament = 0.05, state = 0):
+    def __init__(self, player, entities, openess = 0, timer = 180, incrament = 0.05, state = 0):
         self.openess = openess
         self.timer = timer
         self.incrament = incrament
         self.state = state
         self.player = player
+        self.entities = entities
 
     def open_close(self):
         if self.state == 1:
@@ -23,10 +24,17 @@ class Door(object):
                 # print((player.x, player.y) != self.owner.position)
                 # print(self.owner.position)
                 if self.timer <= 0 and (self.player.x, self.player.y) != self.owner.position:
-                    self.owner.blocked = True
-                    self.owner.skin = 2
-                    self.owner.body.active = True
-                    self.state = -1
+                    entity_block = False
+                    for entity in self.entities:
+                        if (entity.x, entity.y) == self.owner.position:
+                            entity_block = True
+                            continue
+
+                    if not entity_block:
+                        self.owner.blocked = True
+                        self.owner.skin = 2
+                        self.owner.body.active = True
+                        self.state = -1
         
         elif self.state == -1:
             self.openess -= self.incrament

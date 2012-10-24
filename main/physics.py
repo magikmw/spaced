@@ -66,7 +66,7 @@ class Physics(object):
         player.body = self.world.CreateBody(player_body)
 
         mob_shape = b2.b2CircleShape()
-        mob_shape.radius = 0.3*2
+        mob_shape.radius = 0.5
 
         mob_fixture = b2.b2FixtureDef()
         mob_fixture.shape = mob_shape

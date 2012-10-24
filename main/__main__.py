@@ -15,11 +15,9 @@ Should be called via a bash script in folder above"""
 # TODO - Make the doors slide [Jday requied]
 # TODO - Items
 # TODO - Shooting
-# TODO - AI - Alien
-# TODO - AI - Robot
 # TODO - Optimize HUD.prepare()
 # TODO - Enemy sides - sprites
-# FIX - Head bobbing + sprites
+# TODO - Audio
 
 ###
 # LOGGING
@@ -160,9 +158,9 @@ def main():
 
             if event.type == Event.KEY_RELEASED:
                 if game.player.bob > 0:     #level the headbobbing
-                    game.player.bob -= 1
+                    game.player.bob -= .5
                 elif game.player.bob < 0:
-                    game.player.bob += 1
+                    game.player.bob += .5
 
                 game.player.strafing = False 
                     #disable speed limiter for moving in 2 axii

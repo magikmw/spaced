@@ -78,7 +78,7 @@ class Entity(object):
                             height = int((64 / distance * PP_DISTANCE)+.5)
                         except(ZeroDivisionError):
                             height = int(64 * PP_DISTANCE+.5)
-                        sprite_slice.y = PP_HEIGHT/2 - height/2
+                        sprite_slice.y = PP_HEIGHT/2 - height/2 + player.bob
                         sprite_slice.set_texture_rect(IntRect(texture_x/(sprite_width/64), 0, 1, 64))
                         scale = height/64
                         sprite_slice.scale = (1, scale)

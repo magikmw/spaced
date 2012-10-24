@@ -23,4 +23,4 @@ PLAYER_SPEED = 0.05
 TURN_SPEED = 3
 
 #configuration options
-HEAD_BOB = False
+HEAD_BOB = True

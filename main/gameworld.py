@@ -61,8 +61,8 @@ class Gameworld(object):
 
         self.entities = []
         #8-14 x, 6-9 y
-        for x in range(8,14):
-            for y in range(6,9):
+        for x in range(10,11):
+            for y in range(7,8):
                 test = Entity(x, y, texture_enemies, 0, 0)
                 self.entities.append(test)
 
@@ -80,7 +80,7 @@ class Gameworld(object):
                     dict_map[(l_x, l_y)].skin = 1
                 elif level_array[l_x][l_y] == '%':
                     dict_map[(l_x, l_y)].skin = 2
-                    door_component = Door(player = self.player)
+                    door_component = Door(player = self.player, entities = self.entities)
                     dict_map[(l_x, l_y)].door = door_component
                     dict_map[(l_x, l_y)].add_door_component()
                 elif level_array[l_x][l_y] == '[':
